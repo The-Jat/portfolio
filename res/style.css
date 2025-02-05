@@ -1,0 +1,629 @@
+
+/* epic portfolio website
+   jewel, 2022 */
+
+/* 
+ * the agave font is distributed under the MIT license and is (c) 2013-2021 by
+ * type agaric <agaric@protonmail.com>
+ * https://b.agaric.net/page/agave
+ */
+
+/* @font-face {
+    font-family: agave;
+    src: url("fonts/agave-regular.ttf");
+}
+
+@font-face {
+    font-family: agave;
+    src: url("fonts/agave-bold.ttf");
+    font-weight: bold;
+} */
+
+* {
+    outline: none !important;
+}
+
+.purpleTheme {
+    --background: url("images/desktop_background.jpg");
+    --text: #111;
+    --window-border: #231c33;
+    --title-inactive-bg: #a697c7;
+    --title-inactive-fg: #373347;
+    --title-active-bg: #7f5dc7;
+    --title-active-fg: #111;
+    --window-body: #d9d1e3;
+    --button-bg: #d0c3e0;
+    --button-fg: #111;
+    --object-bright: #9485a8;
+    --object-dark: #443b4f;
+    --link: #8763c2;
+    --scrollbar-container: #9c94a8;
+    --taskbar-border: #443b4f;
+    --taskbar-bg: #cabade;
+    --textbox-bg: #e9e6f0;
+    --textbox-fg: #111;
+    --upload-icon: #7f5dc7;
+    --background-tint: rgba(38,29,59,0.3);
+    --desktop-icon-container-inactive: rgba(0,0,0,0);
+    --desktop-icon-container-active: rgba(29,22,38,0.7);
+    --desktop-icon-text: #e9e6f0;
+    --desktop-icon-text-bg: rgba(29,22,38,0.8);
+    --folder-filter: none;
+}
+
+.greenTheme {
+    --background: url("images/desktop_background.jpg");
+    --text: #111;
+    --window-border: #111e1b;
+    --title-inactive-bg: #80b0b1;
+    --title-inactive-fg: #33473a;
+    --title-active-bg: #45898a;
+    --title-active-fg: #111;
+    --window-body: #d8e3e2;
+    --button-bg: #c3e0e0;
+    --button-fg: #111;
+    --object-bright: #85a8a7;
+    --object-dark: #3b4e4f;
+    --link: #285753;
+    --scrollbar-container: #94a5a8;
+    --taskbar-border: #3b4e4f;
+    --taskbar-bg: #bad8de;
+    --textbox-bg: #e6eef0;
+    --textbox-fg: #111;
+    --upload-icon: #45898a;
+    --background-tint: rgba(14,21,23,0.3);
+    --desktop-icon-container-inactive: rgba(0,0,0,0);
+    --desktop-icon-container-active: rgba(22,33,38,0.7);
+    --desktop-icon-text: #e6eef0;
+    --desktop-icon-text-bg: rgba(22,33,38,0.8);
+    --folder-filter: hue-rotate(245deg) brightness(75%);
+}
+
+.blueTheme {
+    --background: url("images/desktop_background.jpg");
+    --text: #111;
+    --window-border: #11151e;
+    --title-inactive-bg: #6b96e8;
+    --title-inactive-fg: #24375c;
+    --title-active-bg: #3666c2;
+    --title-active-fg: #111;
+    --window-body: #d8dce3;
+    --button-bg: #c3c9e0;
+    --button-fg: #111;
+    --object-bright: #858aa8;
+    --object-dark: #3b3c4f;
+    --link: #1b3dab;
+    --scrollbar-container: #9499a8;
+    --taskbar-border: #3b3c4f;
+    --taskbar-bg: #bfc5db;
+    --textbox-bg: #e6e8f0;
+    --textbox-fg: #111;
+    --upload-icon: 3666c2;
+    --background-tint: rgba(14, 15, 23, 0.26);
+    --desktop-icon-container-inactive: rgba(0,0,0,0);
+    --desktop-icon-container-active: rgba(22, 24, 38, 0.7);
+    --desktop-icon-text: #e6eef0;
+    --desktop-icon-text-bg: rgba(22, 24, 38, 0.7);
+    --folder-filter: hue-rotate(-36deg) brightness(70%);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: agave, monospace;
+    font-size: 12pt;
+    line-height: 14pt;
+    overflow: hidden !important;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0px;
+    padding: 0px;
+    color: var(--text);
+    background-image: linear-gradient(var(--background-tint), var(--background-tint)), var(--background);
+    image-rendering: pixelated;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+p {
+    margin: 6px 0px 12px 0px !important;
+    padding: 0px !important;
+}
+
+#heart {
+    display: none;
+    position: fixed;
+    z-index: -1;    /* actual windows will never go negative, keep this as the lowest item */
+    left: 9vw;
+    bottom: 11vh;
+    width: 9vw;
+    height: 9vw;
+    background-image: url('images/heart.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: saturate(0.6) brightness(1.2);
+}
+
+#saturn {
+    display: none;
+    position: fixed;
+    z-index: -2;
+    right: 9vw;
+    top: 15vh;
+    width: 21vw;
+    height: 21vw;
+    background-image: url('images/saturn.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    /*filter: saturate(0.8);*/
+}
+
+.window {
+    position: fixed;
+    /*border-top: 3px solid #5d3420;
+    border-left: 3px solid #5d3420;
+    border-right: 5px solid #5d3420;
+    border-bottom: 5px solid #5d3420;*/
+    border: 1px solid var(--window-border);
+    padding: 1px;
+    background-color: var(--window-border);
+    /*border-radius: 4px;*/
+    box-shadow: 4px 4px 0 0.1px var(--window-border);
+}
+
+.title {
+    display: block;
+    height: 13pt;
+    padding: 3px 6px 3px 6px;
+    background-color: var(--title-inactive-bg);
+    border-bottom: 2px solid var(--window-border);
+    color: var(--title-inactive-fg);
+}
+
+.titleActive {
+    background-color: var(--title-active-bg) !important;
+    color: var(--title-active-fg) !important;
+}
+
+.title div {    /* title text container */
+    text-align: center;
+    font-weight: bold;
+    float: left;
+    display: block;
+    width: calc(100% - 13pt - 3px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.titleButton {
+    text-align: right;
+    display: inline-block;
+    width: 13pt;
+    height: 13pt;
+}
+
+.content {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    float: left;
+    display: block;
+    width: calc(100% - 24px);     /* default */
+    padding: 12px;
+    /*background-color: #f6eada;*/
+    background-color: var(--window-body);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.content::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.contentScrollable {
+    width: calc(100% - 44px) !important; /* taking into account width of scrollbar */
+}
+
+.buttonContainer {
+    border-top: 1px solid var(--title-inactive-bg);
+    margin-top: 20px;
+    padding: 16px 0px;
+    text-align: center;
+}
+
+button, input[type=button], input[type=submit] {
+    font-family: agave, monospace;
+    font-size: 12pt;
+    line-height: 14pt;
+    text-align: center;
+    vertical-align: middle;
+
+    background-color: var(--button-bg);
+    color: var(--button-fg);
+    border: 2px solid;
+    border-color: var(--object-bright) var(--object-dark) var(--object-dark) var(--object-bright);
+    border-radius: 0px;     /* for safari */
+    margin: 0px;
+    padding: 4px 16px 4px 16px;
+}
+
+input[type=submit] {    /* this fixes safari's rounded corners */
+    -webkit-appearance: none;
+}
+
+button:active, input[type=button]:active, input[type=submit]:active, .buttonActive {
+    border-color: var(--object-dark) var(--object-bright) var(--object-bright) var(--object-dark);
+}
+
+.content ul {
+    margin: 0px 0px 8px 0px !important;
+    padding: 0px !important;
+    list-style: none;
+}
+
+.content li {
+    list-style: none;
+}
+
+.content li::before {
+    content: '\2022';
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+a {
+    cursor: pointer !important;
+    text-decoration: underline;
+    color: var(--link);
+}
+
+img {
+    display: inline-block;
+    border: 2px solid var(--window-border);
+    /*background-color: var(--window-border);*/
+    background: none transparent;
+    image-rendering: auto;
+}
+
+.mdImageContainer {
+    text-align: center;
+}
+
+.mdImageContainer img {
+    border: none !important;
+    max-height: 40vh;
+}
+
+h1, h2 {
+    margin: 0px 0px 8px 0px !important;
+    padding: 0px !important;
+    line-height: 105%;
+}
+
+h3, h4, h5, h6 {
+    margin: 0px 0px 1px 0px !important;
+    padding: 0px !important;
+    line-height: 100%;
+}
+
+.scrollbarContainer {
+    position: relative;
+    left: calc(100% - 20px);
+    width: 20px;    /* height will be calculated in js */
+    background-color: var(--scrollbar-container);
+}
+
+.scrollbar {
+    position: relative;
+    box-sizing: border-box;
+    width: 20px;
+    min-height: 24px;
+    background-color: var(--button-bg);
+    border: 2px solid;
+    border-color: var(--object-bright) var(--object-dark) var(--object-dark) var(--object-bright);
+}
+
+#taskbar {
+    position: fixed;
+    box-sizing: border-box;
+    overflow: hidden !important;
+    /*border: 2px solid;
+    border-color: #7d5a6b #222 #222 #7d5a6b;*/
+
+    border-bottom: 2px solid var(--taskbar-border);
+    /* top: 0px; */
+    bottom: 0px;
+    left: 0px;
+    z-index: 999999;    /* always on top */
+    width: 100vw;
+    background-color: var(--taskbar-bg);
+    padding: 1px;
+}
+
+#taskbar div {
+    display: inline-block;
+    width: auto;
+}
+
+#menuButton {
+    margin-right: 4px;
+    font-size: 105%;
+}
+
+#clock {
+    float: right;
+    background-color: var(--button-bg);
+    color: var(--button-fg);
+    border: 2px solid;
+    border-color: var(--object-dark) var(--object-bright) var(--object-bright) var(--object-dark);
+    padding: 4px 8px 4px 8px;
+    font-size: 85%;
+}
+
+#menu {
+    position: fixed;
+    left: 1px;      /* top position will be accounted for later */
+    z-index: 9999990;   /* always on top */
+    min-width: 18vw;
+    background-color: var(--button-bg);
+    margin: 0px !important;
+    padding: 0px !important;
+    border: 2px solid;
+    border-color: var(--object-bright) var(--object-dark) var(--object-dark) var(--object-bright);
+}
+
+#menu li {
+    list-style: none;
+    margin: 0px !important;
+    box-sizing: border-box;
+    padding: 8px 16px 8px 16px !important;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid var(--taskbar-border);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#menu li:last-child {
+    border: 0px !important;
+}
+
+#menu li:hover {
+    background-color: var(--title-inactive-bg);
+}
+
+.taskbarButton {
+    width: 15vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 2px;
+    text-align: left !important;
+    padding: 4px 8px 4px 8px !important;
+    font-size: 92%;
+}
+
+#taskbar .buttonActive {
+    font-weight: bold;
+}
+
+input[type=text], input[type=password], input[type=email], textarea {
+    box-sizing: border-box;
+    width: 100%;
+
+    font-family: agave, monospace;
+    font-size: 12pt;
+    line-height: 14pt;
+
+    border: 2px solid;
+    border-color: var(--object-dark) var(--object-bright) var(--object-bright) var(--object-dark);
+    border-radius: 0px;     /* for safari */
+    background-color: var(--textbox-bg);
+    color: var(--textbox-fg);
+}
+
+textarea {
+    height: 50vh;
+    resize: none;
+}
+
+form label {
+    display: block;
+    margin-top: 12px;
+}
+
+form label:first-child {
+    margin: 0px !important;
+}
+
+form .buttonContainer {
+    text-align: right !important;
+}
+
+iframe {
+    display: none !important;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.fileName {
+    text-align: center;
+    font-weight: bold;
+}
+
+.uploadIcon {
+    font-size: 30pt;
+    margin: 8px;
+    color: var(--upload-icon);
+}
+
+#desktop {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+.desktopIconContainer {
+    box-sizing: border-box;
+    position: absolute;
+    background-color: var(--desktop-icon-container-inactive);
+    width: 128px;
+    height: 128px;
+    padding: 16px;
+    text-align: center;
+}
+
+.desktopIconContainer span {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--desktop-icon-text);
+    background-color: var(--desktop-icon-text-bg);
+    /*border-radius: 5%;*/
+    padding: 2px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 90%;
+}
+
+.desktopIconContainer:focus {
+    background-color: var(--desktop-icon-container-active);
+}
+
+.desktopIconContainer i {
+    display: block;
+    position: absolute;
+    top: 8px;
+    width: calc(100% - 32px);
+    height: calc(100% - 32px - 14pt);
+    image-rendering: pixelated;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.folderIcon {
+    background-image: url("images/folder.png");
+    filter: var(--folder-filter);
+}
+
+.gearIcon {
+    background-image: url("images/gear.png");
+}
+
+.githubIcon {
+    background-image: url("images/github.png");
+}
+
+.checklistIcon {
+    background-image: url("images/checklist.png");
+}
+
+.emailIcon {
+    background-image: url("images/email.png");
+}
+
+.yearnIcon {
+    background-image: url("https://theyearnvault.com/logo/favicon-192x192.png");
+}
+
+input[type=radio] {
+    display: none !important;
+}
+
+.radioIcon {
+    box-sizing: border-box;
+    float: left;
+    display: block;
+    width: 12pt;
+    height: 12pt;
+    margin-right: 6px;
+    font-weight: bold;
+    font-style: normal;
+    border-radius: 100%;
+
+    border: 2px solid;
+    border-color: var(--object-dark) var(--object-bright) var(--object-bright) var(--object-dark);
+}
+
+.radioIconChecked {
+    position: absolute;
+    margin: 3px;
+    width: calc(12pt - 10px);
+    height: calc(12pt - 10px);
+    background-color: var(--object-dark);
+    border-radius: 100%;
+}
+
+/* desktop only rules */
+@media screen and (min-width: 1280px), screen and (orientation: landscape) {
+    .mdImageContainer img {
+        max-width: 80%;
+    }
+}
+
+/* mobile only rules */
+@media screen and (max-width: 1279px), screen and (orientation: portrait) {
+    .window {
+        min-width: 92vw !important;
+        max-width: 97vw !important;
+        max-height: 75vh !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    #menu {
+        min-width: 57vw !important;
+        max-width: 64vw !important;
+    }
+
+    .mdImageContainer img {
+        max-width: 100%;
+    }
+
+    .taskbarButton {
+        display: none !important;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
+    h5 {
+        font-size: 1.1em;
+    }
+
+    h6 {
+        font-size: 1em;
+    }
+}
