@@ -15,7 +15,7 @@ const artText = "\
 const contactText = "\
     * Email: [manishkl543@gmail.com](mailto:manishkl543@gmail.com)\n\
     * GitHub: [The-Jat](https://github.com/The-Jat)\n\
-    * [LinkedIn profile](https://linkedin.com/in/omarmelghoul/)\n\
+    * [LinkedIn profile](https://www.linkedin.com/in/manish-kala-46a845139)\n\
     * Website: [The-Jat](https://www.thejat.in)";
 
 
