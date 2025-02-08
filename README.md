@@ -15,6 +15,8 @@
    cd portfolio
    ```
 3. Open `index.html` in a browser
+---
 
-Live Demo:
-Contact Me: manishkl543@gmail.com
+🔗 **Live Demo**: [https://the-jat.github.io/portfolio/](https://the-jat.github.io/portfolio/)
+
+📧 **Contact Me**: [manishkl543@gmail.com](mailto:manishkl543@gmail.com)
