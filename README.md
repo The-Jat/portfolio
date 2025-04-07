@@ -1,5 +1,7 @@
 ## Portfolio
 
+The Portfolio of my projects.
+
 ### 🛠️ Technologies Used
 - HTML
 - CSS
