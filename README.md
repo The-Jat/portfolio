@@ -1,13 +1,14 @@
 ## Portfolio
 
-The Portfolio of my projects.
+A showcase of my web development projects, built using core front-end technologies.
 
 ### 🛠️ Technologies Used
-- HTML
-- CSS
-- Javascript
+- HTML5 – Semantic structure
+- CSS3 – Responsive and modern styling
+- JavaScript – Interactivity and dynamic content
 
-### 📂 Installation & Usage
+### 🚀 Getting Started
+Follow these steps to run the project locally:
 1. Clone the Repository:
    ```sh
    git clone https://github.com/The-Jat/portfolio
@@ -16,9 +17,13 @@ The Portfolio of my projects.
    ```sh
    cd portfolio
    ```
-3. Open `index.html` in a browser
+3. Simply open `index.html` in a browser
 ---
 
-🔗 **Live Demo**: [https://the-jat.github.io/portfolio/](https://the-jat.github.io/portfolio/)
+### 🔗 Live Demo:
+Check out the live version here:
+👉 [https://the-jat.github.io/portfolio/](https://the-jat.github.io/portfolio/)
 
-📧 **Contact Me**: [manishkl543@gmail.com](mailto:manishkl543@gmail.com)
+### 📬 Contact:
+For any inquiries or collaboration opportunities:
+📧 [manishkl543@gmail.com](mailto:manishkl543@gmail.com)
