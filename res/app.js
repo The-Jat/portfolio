@@ -273,8 +273,9 @@ function changeSettings(f) {
 
 async function appMain() {
     addMenuItem("About", mainWindow);
-   // addMenuItem("Blog", async function() { await openBlog(); });
+//    addMenuItem("Blog", async function() { await openBlog(); });
     addMenuItem("GitHub", function() { window.open("https://github.com/The-Jat", "_blank"); });
+    addMenuItem("Website", function() {window.open("https://thejat.in", "_blank");});
     addMenuItem("Contact", openContact);
    // addMenuItem("Art Credits", showArt);
     addMenuItem("Settings", openSettings);
