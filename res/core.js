@@ -679,6 +679,7 @@ function createForm(winId, formId, formMethod, formAction, submitHandler) {
     content.appendChild(f);
 }
 
+
 function createTextarea(id, name, label) {
     const f = document.getElementById(id);
     if(!f) {
